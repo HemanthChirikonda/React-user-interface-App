@@ -18,7 +18,7 @@ function UserForm() {
               // 'Content-Type': 'application/x-www-form-urlencoded',
             }, body: JSON.stringify(data)
           });
-          let rese = (await res).json();
+          return (await res).json();
          
     }
     const {id}=useParams()

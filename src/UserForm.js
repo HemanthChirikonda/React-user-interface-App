@@ -1,4 +1,4 @@
-import React, {useState,useEffect } from 'react';
+import React, {useState} from 'react';
 // import './App.css';
 import world from "city-state-country"
 import Select from "./Select"
@@ -9,7 +9,7 @@ import InputElement from "./InputElement"
 
 function UserForm() {
     console.log('render');
-    const world2= require("city-state-country")
+    
     async function postdata(data) {
         const response = await fetch('https://zenclass-demo-server.herokuapp.com/createuser', {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
