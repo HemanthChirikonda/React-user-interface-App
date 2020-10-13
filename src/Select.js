@@ -5,6 +5,7 @@ const Select =(props)=>{
     
      
     const onchanged=(event)=>{
+        console.log(event.target.value)
         props.setvalue(event.target.value);
     }
 

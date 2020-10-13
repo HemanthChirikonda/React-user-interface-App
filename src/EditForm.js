@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from 'react';
 // import './App.css';
-import world from "city-state-country"
+// import world from "city-state-country"
 import Select from "./Select"
 import InputElement from "./InputElement"
 import { useParams } from 'react-router-dom';
 
-async function updateuser(data,id){
-    let res= fetch('http://localhost:3030/edit/'+id,{
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        // mode: 'cors', // no-cors, *cors, same-origin
-        //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        //credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-          'Content-Type': 'application/json'
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        }, body: JSON.stringify(data)
-      });
-      let rese = await res.json();
-      alert(JSON.stringify(rese));
-}
 
-
-
-function EDitForm() {
+function UserForm() {
+    async function updateuser(data,id){
+        let res= fetch('https://zenclass-demo-server.herokuapp.com/edit/'+id,{
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            // mode: 'cors', // no-cors, *cors, same-origin
+            //cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            //credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+              'Content-Type': 'application/json'
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            }, body: JSON.stringify(data)
+          });
+          let rese = (await res).json();
+         
+    }
     const {id}=useParams()
-        console.log(id);
+        //console.log(id);
 
    const [user,setuser]=useState('');
    useEffect(()=>{
        getuser(id);
-   },[]);
+   },[id]);
    
-
-
    console.log(user);
    async function getuser(id){
     fetch('http://localhost:3030/user/'+id)
@@ -69,8 +65,7 @@ useEffect(()=>{
      setuserColor( user !== '' ? user['Fav Color']:'')
 },[user])
 
-  const submit = (event) => {
-    event.preventDefault();
+  const submit = () => {
     const updateduser = {
       "First name": userFirstname,
       "Last name": userLastname,
@@ -86,7 +81,7 @@ useEffect(()=>{
       'Fav Color':userColor
     }
     console.log(updateduser);
-     updateuser(updateduser,id);
+    updateuser(updateduser,id);
 
   }
   return (
@@ -119,4 +114,4 @@ useEffect(()=>{
   );
 }
 
-export default EDitForm;
+export default UserForm;

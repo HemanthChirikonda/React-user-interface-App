@@ -7,10 +7,11 @@ import EditForm from "./EditForm"
 const App =()=>{
 
 return(
-<div>
-  <ul>
-     <li> <Link to={"/"}>{"Home"}</Link></li>
-     <li> <Link to={"/users"}>{"users"}</Link></li>
+<div className='container' style={{backgroundColor:'rgb(120,150,150)'}}>
+<div className='display-4 ' style={{textAlign:"center"}}>{'USER DATA'}</div>
+  <ul className='row' style={{listStyle:'none'}}>
+     <li className='col-6 '><Link to={"/"}><button className={'btn- btn-primary rounded col-12'}> {"Home"}</button></Link></li>
+     <li className='col-6'> <Link to={"/users"}><button className={'btn- btn-primary rounded col-12'}>{"users"}</button></Link></li>
   </ul>
   <Switch>
     <Route path={"/users"}>

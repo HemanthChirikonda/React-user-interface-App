@@ -42,7 +42,18 @@ async function deletedata(vl){
      }
 return(
     <Fragment>
-   <div className="container border">
+   <div className="container">
+   <div className='row m-5 border bg-lighter'>
+            
+            {
+               show ? showdata !==''? Object.keys(showdata).map((key,index)=>{
+                    return(
+                         showdata[key] !==''? <p className={'col-3 display-5'} key={index}>{key}{'-->'}{showdata[key]}</p> :''
+                    )
+                }):'':""
+            }
+               
+         </div>
      {
          data !=="" ?data.map(((item,index)=>{
                  const keys= Object.keys(item);
@@ -61,19 +72,28 @@ return(
 
              return (
                  <Fragment>
-              <div key={item[keys[0]]} className={"row"}>
+                     
+              <div key={item[keys[0]]} className={"row mt-1"}>
                   <div className={"col-3 border"}>
                      
-                     {
+                     <div className='row'>
+                         <div className='col-6'>
+                         {
                          keys[1]
-                     } {'--> '}{
+                     }
+                         </div>
+                         <div className='col-6'>
+                         {
                           item[keys[1]]
                       }
+                         </div>
+                         
+                     </div>
                  </div>
                 
-                    <button  className={'col-3'} onClick={showuser}>{"show"}</button>
-                    <Link to= {`/edit/${item[keys[0]]}`} className="col-3"> <button  className={'col-12'}> {'edit'}</button></Link>
-                    <button className={'col-3'} onClick={deleted}>{'delete'}</button>
+                    <button  className={'col-3 btn btn-primary'} onClick={showuser}>{"show"}</button>
+                    <Link to= {`/edit/${item[keys[0]]}`} className="col-3"> <button  className={'col-12 m-0 btn btn-success'}> {'edit'}</button></Link>
+                    <button className={'col-3 btn btn-danger'} onClick={deleted}>{'delete'}</button>
               
                     
          </div>
@@ -85,17 +105,7 @@ return(
 
      }
       </div>
-      <div className='row m-5'>
-            
-            {
-               show ? showdata !==''? Object.keys(showdata).map((key,index)=>{
-                    return(
-                         showdata[key] !==''? <p className={'col-3 display-5'} key={index}>{key}{'-->'}{showdata[key]}</p> :''
-                    )
-                }):'':""
-            }
-               
-         </div>
+   
 
     </Fragment>
 )
