@@ -10,11 +10,11 @@ const Select =(props)=>{
 
     return(
         <Fragment>
-            <select className={props.className} onChange={onchanged} required={props.required? true: false} >
+            <select className={props.className} onChange={onchanged} required={props.required? true: false} value={props.value}>
     <option>{ props.name?`Select ${props.name}`:'Select option'}</option>
                {
-                   props.data !== "" ? props.data.map((item)=>{
-                    return(<option key={item.id}>{item.name}</option>);
+                   props.data !== "" ? props.data.map((item,index)=>{
+                    return(<option key={index}>{item.name}</option>);
                     }):""
                }
             </select>

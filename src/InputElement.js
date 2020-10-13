@@ -11,7 +11,7 @@ const onchanged=(e)=>{
 }
     return(
         <Fragment>
-            <input className={props.className} placeholder={props.placeholder} type={props.type} onChange={onchanged} style={props.style} required={props.required? true: false} text={props.text}/>
+            <input className={props.className} placeholder={props.placeholder} type={props.type} onChange={onchanged} style={props.style} required={props.required? true: false} text={props.text} value={props.value}/>
         </Fragment>
     )
 
